@@ -3,10 +3,12 @@ import { Controller, Get } from '@nestjs/common';
 @Controller()
 export class AppController {
   @Get()
-  root() {
+ root() {
     return {
-      message: 'DevOps AI Lab API',
-      docs: '/health',
+      name: 'DevOps AI Lab API',
+      version: 'v1',
+      health: '/api/v1/health',
+      docs: '/api/v1/docs',
     };
   }
 }
