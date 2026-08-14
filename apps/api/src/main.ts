@@ -1,28 +1,19 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { ConfigService } from '@nestjs/config';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import helmet from 'helmet';
+import {
+  DocumentBuilder,
+  SwaggerModule,
+} from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const configService = app.get(ConfigService);
-
-  const port = configService.get<number>('port') ?? 3000;
-
   app.setGlobalPrefix('api/v1');
 
-  app.use(
-    helmet({
-      crossOriginResourcePolicy: false,
-    }),
-  );
-
   app.enableCors({
-    origin: true,
+    origin: 'http://localhost:3000',
     credentials: true,
   });
 
@@ -36,30 +27,42 @@ async function bootstrap() {
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('DevOps AI Lab API')
-    .setDescription('Backend API for the DevOps AI Lab platform.')
-    .setVersion(configService.get<string>('appVersion') ?? '1.0.0')
-    .addBearerAuth()
+    .setDescription(
+      'Production-ready DevOps Engineering Platform API',
+    )
+    .setVersion('1.0.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'Authorization',
+        description: 'Enter JWT Access Token',
+        in: 'header',
+      },
+      'JWT',
+    )
     .build();
 
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  const document = SwaggerModule.createDocument(
+    app,
+    swaggerConfig,
+  );
 
-  SwaggerModule.setup('api/v1/docs', app, document, {
-    swaggerOptions: {
-      persistAuthorization: true,
-    },
-  });
+  SwaggerModule.setup('api/v1/docs', app, document);
 
-  await app.listen(port);
+  await app.listen(process.env.PORT || 3000);
 
-  console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.clear();
+
   console.log('🚀 DevOps AI Lab API');
-  console.log(`🌍 Environment : ${configService.get('nodeEnv')}`);
-  console.log(`📦 Version     : ${configService.get('appVersion')}`);
-  console.log(`🔌 Port        : ${port}`);
-  console.log(`❤️ Health      : http://localhost:${port}/api/v1/health`);
-  console.log(`📚 Swagger     : http://localhost:${port}/api/v1/docs`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`🌐 Port      : ${process.env.PORT || 3000}`);
+  console.log(
+    `❤️  Health    : http://localhost:${process.env.PORT || 3000}/api/v1/health`,
+  );
+  console.log(
+    `📘 Swagger   : http://localhost:${process.env.PORT || 3000}/api/v1/docs`,
+  );
 }
 
 bootstrap();

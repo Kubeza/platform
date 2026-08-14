@@ -1,0 +1,8 @@
+export const DEFAULT_COLLAPSIBLE_OPEN =
+  false;
+
+export const COLLAPSIBLE_ANIMATION_DURATION =
+  200;
+
+export const COLLAPSIBLE_CONTENT_PADDING =
+  8;

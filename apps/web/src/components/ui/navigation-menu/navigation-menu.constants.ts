@@ -1,0 +1,11 @@
+export const DEFAULT_NAVIGATION_MENU_VALUE =
+  null;
+
+export const NAVIGATION_MENU_CONTENT_WIDTH =
+  "20rem";
+
+export const NAVIGATION_MENU_ANIMATION_DURATION =
+  200;
+
+export const NAVIGATION_MENU_TRIGGER_HEIGHT =
+  "2.5rem";

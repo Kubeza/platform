@@ -1,0 +1,15 @@
+export const DEFAULT_TIME_PICKER_VALUE = null;
+
+export const DEFAULT_TIME_PICKER_OPEN = false;
+
+export const TIME_PICKER_INPUT_HEIGHT = 40;
+
+export const TIME_PICKER_CONTENT_WIDTH = 288;
+
+export const TIME_PICKER_ANIMATION_DURATION = 150;
+
+export const TIME_PICKER_MINUTES_MAX = 59;
+
+export const TIME_PICKER_SECONDS_MAX = 59;
+
+export const TIME_PICKER_HOURS_MAX = 23;

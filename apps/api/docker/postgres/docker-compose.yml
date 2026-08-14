@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:17
+
+    container_name: devops-ai-lab-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: devops_ai_lab
+      POSTGRES_USER: devops
+      POSTGRES_PASSWORD: devops123
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devops -d devops_ai_lab"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

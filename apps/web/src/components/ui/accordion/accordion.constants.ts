@@ -1,0 +1,14 @@
+export const DEFAULT_ACCORDION_VALUE =
+  null;
+
+export const ACCORDION_ANIMATION_DURATION =
+  200;
+
+export const ACCORDION_ICON_SIZE =
+  16;
+
+export const ACCORDION_TRIGGER_HEIGHT =
+  56;
+
+export const ACCORDION_CONTENT_PADDING =
+  16;

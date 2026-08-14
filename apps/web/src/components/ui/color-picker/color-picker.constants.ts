@@ -1,0 +1,17 @@
+export const DEFAULT_COLOR_PICKER_VALUE =
+  "#000000";
+
+export const DEFAULT_COLOR_PICKER_OPEN =
+  false;
+
+export const COLOR_PICKER_SWATCH_SIZE =
+  32;
+
+export const COLOR_PICKER_INPUT_SIZE =
+  40;
+
+export const COLOR_PICKER_CONTENT_WIDTH =
+  288;
+
+export const COLOR_PICKER_ANIMATION_DURATION =
+  150;

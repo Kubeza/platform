@@ -1,0 +1,14 @@
+export const DEFAULT_AUTOCOMPLETE_VALUE = "";
+
+export const DEFAULT_AUTOCOMPLETE_OPEN =
+  false;
+
+export const AUTOCOMPLETE_MAX_HEIGHT = 288;
+
+export const AUTOCOMPLETE_ITEM_HEIGHT = 36;
+
+export const AUTOCOMPLETE_ANIMATION_DURATION =
+  150;
+
+export const AUTOCOMPLETE_SEARCH_PLACEHOLDER =
+  "Search...";
