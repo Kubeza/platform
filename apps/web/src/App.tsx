@@ -1,5 +1,13 @@
-import Container from "./components/layout/Container";
+import AIMentor from "./components/sections/ai-mentor/AIMentor";
+import CTA from "./components/sections/cta/CTA";
+import Ecosystem from "./components/sections/ecosystem/Ecosystem";
+import Hero from "./components/sections/hero/Hero";
+import HowItWorks from "./components/sections/how-it-works/HowItWorks";
+import InteractiveLabs from "./components/sections/interactive-labs/InteractiveLabs";
+import Mission from "./components/sections/mission/Mission";
 import Navbar from "./components/navigation/Navbar";
+import PlatformOverview from "./components/sections/platform-overview/PlatformOverview";
+import Footer from "./components/sections/footer/Footer";
 
 export default function App(): React.JSX.Element {
   return (
@@ -7,15 +15,17 @@ export default function App(): React.JSX.Element {
       <Navbar />
 
       <main>
-        <section
-          aria-label="Kubeza website content"
-          className="min-h-[calc(100vh-4rem)]"
-        >
-          <Container className="flex min-h-[calc(100vh-4rem)] items-center justify-center">
-            <div className="h-px w-full max-w-5xl bg-white/[0.04]" />
-          </Container>
-        </section>
+        <Hero />
+        <PlatformOverview />
+        <HowItWorks />
+        <InteractiveLabs />
+        <AIMentor />
+        <Ecosystem />
+        <Mission />
+        <CTA />
       </main>
+
+      <Footer />
     </div>
   );
 }
