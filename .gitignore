@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.next/
+.vite/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# Local recovery / backup copies
+apps/web-before-zip-restore/
+
+# Local ZIP checkpoints
+apps/web.zip
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.swp
+*.swo
