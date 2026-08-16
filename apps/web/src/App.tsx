@@ -2,17 +2,21 @@ import {
   Navigate,
   Route,
   Routes,
+  useParams,
 } from "react-router-dom";
 
-import Navbar from "./components/navigation/Navbar";
-import Hero from "./components/sections/hero/Hero";
-
+import LabsHome from "./pages/labs/LabsHome";
 import LabOverview from "./pages/labs/LabOverview";
 import LabWorkspace from "./pages/labs/LabWorkspace";
 
+import PracticeHome from "./pages/practice/PracticeHome";
 import LinuxPracticeWorkspace from "./pages/practice/LinuxPracticeWorkspace";
 import NetworkingPracticeWorkspace from "./pages/practice/NetworkingPracticeWorkspace";
-import PracticeHome from "./pages/practice/PracticeHome";
+import DockerPracticeWorkspace from "./pages/practice/DockerPracticeWorkspace";
+import KubernetesPracticeWorkspace from "./pages/practice/KubernetesPracticeWorkspace";
+
+import Platform from "./pages/platform/Platform";
+import AIMentorPage from "./pages/ai-mentor/AIMentorPage";
 
 import About from "./pages/about/About";
 import Pricing from "./pages/pricing/Pricing";
@@ -20,103 +24,48 @@ import Pricing from "./pages/pricing/Pricing";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 
-import {
-  getLabBySlug,
-} from "./labs";
+import { getLabBySlug } from "./labs";
 
-function LandingPage(): React.JSX.Element {
-  return (
-    <div className="min-h-screen bg-[#08090B] text-white">
-      <Navbar />
+function LabOverviewRoute(): React.JSX.Element {
+  const { slug } = useParams<{ slug: string }>();
 
-      <main>
-        <Hero />
-      </main>
-    </div>
-  );
-}
-
-function LabRoute({
-  slug,
-  workspace = false,
-}: {
-  slug: string;
-  workspace?: boolean;
-}): React.JSX.Element {
-  const lab = getLabBySlug(slug);
+  const lab = slug ? getLabBySlug(slug) : undefined;
 
   if (!lab) {
-    return (
-      <Navigate
-        to="/labs"
-        replace
-      />
-    );
-  }
-
-  if (workspace) {
-    return <LabWorkspace lab={lab} />;
+    return <Navigate to="/labs" replace />;
   }
 
   return <LabOverview lab={lab} />;
 }
 
-function LabsIndex(): React.JSX.Element {
-  return (
-    <Navigate
-      to="/labs/nginx"
-      replace
-    />
-  );
+function LabWorkspaceRoute(): React.JSX.Element {
+  const { slug } = useParams<{ slug: string }>();
+
+  const lab = slug ? getLabBySlug(slug) : undefined;
+
+  if (!lab) {
+    return <Navigate to="/labs" replace />;
+  }
+
+  return <LabWorkspace lab={lab} />;
 }
 
 export default function App(): React.JSX.Element {
   return (
     <Routes>
-      {/* LANDING */}
+      <Route path="/" element={<Navigate to="/labs" replace />} />
 
-      <Route
-        path="/"
-        element={<LandingPage />}
-      />
-
-      {/* LABS */}
-
-      <Route
-        path="/labs"
-        element={<LabsIndex />}
-      />
+      <Route path="/labs" element={<LabsHome />} />
 
       <Route
         path="/labs/:slug"
-        element={
-          <LabRoute
-            slug={
-              window.location.pathname
-                .split("/")
-                .filter(Boolean)[1] ??
-              ""
-            }
-          />
-        }
+        element={<LabOverviewRoute />}
       />
 
       <Route
         path="/labs/:slug/workspace"
-        element={
-          <LabRoute
-            workspace
-            slug={
-              window.location.pathname
-                .split("/")
-                .filter(Boolean)[1] ??
-              ""
-            }
-          />
-        }
+        element={<LabWorkspaceRoute />}
       />
-
-      {/* PRACTICE */}
 
       <Route
         path="/practice"
@@ -125,19 +74,33 @@ export default function App(): React.JSX.Element {
 
       <Route
         path="/practice/linux"
-        element={
-          <LinuxPracticeWorkspace />
-        }
+        element={<LinuxPracticeWorkspace />}
       />
 
       <Route
         path="/practice/networking"
-        element={
-          <NetworkingPracticeWorkspace />
-        }
+        element={<NetworkingPracticeWorkspace />}
       />
 
-      {/* COMPANY */}
+      <Route
+        path="/practice/docker"
+        element={<DockerPracticeWorkspace />}
+      />
+
+      <Route
+        path="/practice/kubernetes"
+        element={<KubernetesPracticeWorkspace />}
+      />
+
+      <Route
+        path="/platform"
+        element={<Platform />}
+      />
+
+      <Route
+        path="/ai-mentor"
+        element={<AIMentorPage />}
+      />
 
       <Route
         path="/about"
@@ -149,8 +112,6 @@ export default function App(): React.JSX.Element {
         element={<Pricing />}
       />
 
-      {/* AUTH */}
-
       <Route
         path="/signin"
         element={<SignIn />}
@@ -161,16 +122,9 @@ export default function App(): React.JSX.Element {
         element={<SignUp />}
       />
 
-      {/* FALLBACK */}
-
       <Route
         path="*"
-        element={
-          <Navigate
-            to="/"
-            replace
-          />
-        }
+        element={<Navigate to="/labs" replace />}
       />
     </Routes>
   );
