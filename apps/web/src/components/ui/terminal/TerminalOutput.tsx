@@ -15,7 +15,10 @@ export function TerminalOutput({
   return (
     <pre
       className={cn(
-        "overflow-x-auto whitespace-pre-wrap break-words font-mono text-sm text-green-400",
+        "mt-1 max-w-full overflow-x-hidden",
+        "whitespace-pre-wrap break-words",
+        "font-mono text-[13px] leading-6",
+        "text-slate-400",
         className,
       )}
       {...props}

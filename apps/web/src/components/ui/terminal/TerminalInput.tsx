@@ -4,8 +4,6 @@ import type { InputHTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Input } from "../input";
-
 export interface TerminalInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {}
 
@@ -14,13 +12,14 @@ export function TerminalInput({
   ...props
 }: TerminalInputProps) {
   return (
-    <Input
+    <input
+      type="text"
       autoComplete="off"
       autoCorrect="off"
       autoCapitalize="off"
       spellCheck={false}
       className={cn(
-        "border-0 bg-transparent px-0 font-mono text-sm text-green-400 shadow-none focus-visible:ring-0",
+        "min-w-0 flex-1 border-0 bg-transparent p-0 font-mono text-sm leading-6 text-slate-200 outline-none placeholder:text-slate-700 focus:outline-none",
         className,
       )}
       {...props}

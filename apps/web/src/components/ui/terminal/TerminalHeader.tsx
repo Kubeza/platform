@@ -15,7 +15,11 @@ export function TerminalHeader({
   return (
     <div
       className={cn(
-        "flex items-center justify-between border-b border-white/10 bg-zinc-900 px-4 py-2",
+        "flex shrink-0 items-center justify-between",
+        "border-b border-white/[0.08]",
+        "bg-[#070B16]",
+        "px-4 py-3",
+      "select-none",
         className,
       )}
       {...props}

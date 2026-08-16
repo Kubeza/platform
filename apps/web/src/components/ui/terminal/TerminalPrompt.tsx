@@ -21,19 +21,34 @@ export function TerminalPrompt({
   return (
     <span
       className={cn(
-        "select-none font-mono text-sm",
+        "inline-flex shrink-0 select-none items-center font-mono text-[13px] leading-6",
         className,
       )}
       {...props}
     >
-      <span className="text-green-400">
-        {user}@{host}
+      <span className="font-semibold text-[#67E8F9]">
+        {user}
       </span>
-      <span className="text-white">:</span>
-      <span className="text-blue-400">
+
+      <span className="text-slate-600">
+        @
+      </span>
+
+      <span className="font-medium text-[#4F46E5]">
+        {host}
+      </span>
+
+      <span className="mx-1 text-slate-600">
+        :
+      </span>
+
+      <span className="text-sky-400">
         {path}
       </span>
-      <span className="ml-1 text-white">$</span>
+
+      <span className="ml-2 font-semibold text-slate-300">
+        $
+      </span>
     </span>
   );
 }

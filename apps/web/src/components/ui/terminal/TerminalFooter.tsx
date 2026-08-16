@@ -15,7 +15,7 @@ export function TerminalFooter({
   return (
     <div
       className={cn(
-        "border-t border-white/10 bg-zinc-900 px-4 py-2",
+        "shrink-0 bg-black px-5 pb-4",
         className,
       )}
       {...props}
