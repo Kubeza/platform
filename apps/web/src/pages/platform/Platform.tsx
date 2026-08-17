@@ -1,306 +1,222 @@
 import {
   ArrowRight,
-  BrainCircuit,
-  CheckCircle2,
+  Box,
   Cloud,
   Container,
-  GitBranch,
   Network,
-  Server,
+  ShieldCheck,
+  Sparkles,
   Terminal,
-  Wrench,
+  Workflow,
 } from "lucide-react";
 
 import Navbar from "../../components/navigation/Navbar";
 
-const practiceAreas = [
+const environments = [
   {
+    name: "Linux",
+    description:
+      "The foundation for system administration, services, processes, permissions and troubleshooting.",
     icon: Terminal,
-    title: "Linux",
-    description:
-      "Work with processes, services, permissions, filesystems, logs and system failures.",
+    status: "Available",
   },
   {
+    name: "Networking",
+    description:
+      "Connectivity, DNS, ports, routing and service-to-service communication.",
     icon: Network,
-    title: "Networking",
-    description:
-      "Diagnose connectivity, DNS, ports, routing and service communication problems.",
+    status: "Available",
   },
   {
+    name: "Docker",
+    description:
+      "Containers, images, volumes, networking and runtime behaviour.",
     icon: Container,
-    title: "Docker",
-    description:
-      "Build, inspect and troubleshoot containerized workloads and their runtime behavior.",
+    status: "In development",
   },
   {
-    icon: Server,
-    title: "Kubernetes",
+    name: "Kubernetes",
     description:
-      "Operate workloads, inspect cluster resources and investigate application failures.",
+      "Workloads, services, deployments, clusters and production troubleshooting.",
+    icon: Box,
+    status: "Coming soon",
   },
   {
-    icon: GitBranch,
-    title: "Terraform",
+    name: "Terraform",
     description:
-      "Practice infrastructure changes, state management and infrastructure troubleshooting.",
+      "Infrastructure as code, state, resources and infrastructure workflows.",
+    icon: Workflow,
+    status: "In development",
   },
   {
+    name: "Cloud",
+    description:
+      "Cloud infrastructure across compute, networking, storage and DevOps workflows.",
     icon: Cloud,
-    title: "Cloud",
-    description:
-      "Develop practical skills across modern cloud infrastructure and DevOps workflows.",
-  },
-];
-
-const workflow = [
-  {
-    number: "01",
-    title: "Choose a problem",
-    description:
-      "Pick an engineering scenario instead of watching another tutorial.",
+    status: "Coming soon",
   },
   {
-    number: "02",
-    title: "Enter the environment",
+    name: "Security",
     description:
-      "Get a working environment containing the systems and failures you need to investigate.",
-  },
-  {
-    number: "03",
-    title: "Investigate",
-    description:
-      "Use commands, logs, metrics and system tools to understand what is actually happening.",
-  },
-  {
-    number: "04",
-    title: "Fix and verify",
-    description:
-      "Make the change, validate the result and prove that the system is healthy again.",
+      "Infrastructure hardening, DevSecOps practices and security-aware engineering.",
+    icon: ShieldCheck,
+    status: "In development",
   },
 ];
 
 export default function Platform(): React.JSX.Element {
   return (
-    <div className="min-h-screen bg-[#F3F2EE] text-[#18181B]">
+    <div className="min-h-screen bg-[#050816] text-white">
       <Navbar />
 
       <main>
-        <section className="relative overflow-hidden border-b border-[#18181B]/[0.07]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-[0.18]"
-            style={{
-              backgroundImage:
-                "linear-gradient(#18181B08 1px, transparent 1px), linear-gradient(90deg, #18181B08 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
+        <section className="relative overflow-hidden border-b border-white/[0.07]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(79,70,229,0.18),transparent_32%),radial-gradient(circle_at_80%_70%,rgba(103,232,249,0.07),transparent_30%)]" />
 
-          <div className="relative mx-auto grid max-w-screen-2xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-[1fr_0.8fr] lg:px-12 lg:py-28 xl:px-16">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#4F46E5]/[0.14] bg-white/60 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#4F46E5]">
-                <Wrench className="size-3.5" />
+          <div className="relative mx-auto max-w-screen-2xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28 xl:px-16">
+            <div className="max-w-5xl">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#67E8F9]/15 bg-[#67E8F9]/[0.04] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#67E8F9]">
+                <Sparkles className="size-3" />
                 The Kubeza platform
               </div>
 
-              <h1 className="mt-7 text-5xl font-semibold leading-[0.96] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
-                Stop studying
+              <h1 className="text-5xl font-semibold leading-[0.96] tracking-[-0.06em] sm:text-6xl lg:text-8xl">
+                One place to
                 <span className="block text-[#4F46E5]">
-                  infrastructure.
+                  operate infrastructure.
                 </span>
-                Start operating it.
               </h1>
 
-              <p className="mt-7 max-w-2xl text-base leading-8 text-[#686861] sm:text-lg">
-                Kubeza is a hands-on engineering platform where you
-                practice troubleshooting real systems instead of only
-                reading about them.
+              <p className="mt-7 max-w-2xl text-base leading-8 text-slate-500 sm:text-lg">
+                Kubeza brings environments, realistic engineering
+                scenarios, practice, and AI assistance into one
+                evolving platform.
               </p>
 
-              <div className="mt-9 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-2">
                 <a
                   href="/labs"
-                  className="inline-flex h-11 items-center gap-2 rounded-lg bg-[#4F46E5] px-5 text-sm font-medium text-white transition hover:bg-[#4338CA]"
+                  className="inline-flex h-10 items-center gap-2 rounded-lg bg-[#4F46E5] px-4 text-sm font-semibold text-white transition hover:bg-[#4338CA]"
                 >
-                  Explore labs
+                  Explore environments
                   <ArrowRight className="size-4" />
                 </a>
 
                 <a
                   href="/ai-mentor"
-                  className="inline-flex h-11 items-center rounded-lg border border-[#18181B]/[0.12] bg-white/60 px-5 text-sm font-medium text-[#3F3F3A] transition hover:bg-white"
+                  className="inline-flex h-10 items-center gap-2 rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 text-sm font-medium text-slate-300 transition hover:bg-white/[0.06] hover:text-white"
                 >
                   Meet the AI Mentor
                 </a>
               </div>
             </div>
-
-            <div className="flex items-center lg:justify-end">
-              <div className="w-full max-w-[500px] overflow-hidden rounded-2xl border border-[#18181B]/[0.10] bg-[#111214] shadow-[0_30px_80px_rgba(20,20,20,0.13)]">
-                <div className="flex h-10 items-center gap-1.5 border-b border-white/[0.08] px-4">
-                  <span className="size-2.5 rounded-full bg-[#FF5F57]" />
-                  <span className="size-2.5 rounded-full bg-[#FEBC2E]" />
-                  <span className="size-2.5 rounded-full bg-[#28C840]" />
-
-                  <span className="ml-2 font-mono text-[10px] text-[#666]">
-                    kubeza / nginx-lab
-                  </span>
-                </div>
-
-                <div className="grid min-h-[300px] md:grid-cols-[1.25fr_0.75fr]">
-                  <div className="border-b border-white/[0.07] p-5 font-mono text-xs leading-7 md:border-b-0 md:border-r">
-                    <div className="text-[#666]">
-                      # investigate the service
-                    </div>
-
-                    <div className="mt-3 text-[#E5E5E5]">
-                      <span className="text-[#67E8F9]">
-                        ubuntu
-                      </span>
-                      <span className="text-[#555]">@</span>
-                      <span className="text-[#5BA8FF]">
-                        kubeza
-                      </span>
-                      <span className="text-[#555]">
-                        :~$
-                      </span>{" "}
-                      systemctl status nginx
-                    </div>
-
-                    <div className="text-[#E77676]">
-                      ● nginx.service failed
-                    </div>
-
-                    <div className="mt-2 text-[#E5E5E5]">
-                      <span className="text-[#67E8F9]">
-                        ubuntu
-                      </span>
-                      <span className="text-[#555]">@</span>
-                      <span className="text-[#5BA8FF]">
-                        kubeza
-                      </span>
-                      <span className="text-[#555]">
-                        :~$
-                      </span>{" "}
-                      nginx -t
-                    </div>
-
-                    <div className="text-[#E6B85C]">
-                      configuration test failed
-                    </div>
-
-                    <div className="mt-3 text-[#777]">
-                      investigate → fix → verify
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <div className="flex items-center gap-2 text-sm font-medium text-white">
-                      <BrainCircuit className="size-4 text-[#67E8F9]" />
-                      AI Mentor
-                    </div>
-
-                    <p className="mt-4 text-xs leading-6 text-[#8C8C88]">
-                      Start by inspecting the reported configuration
-                      error before changing the service state.
-                    </p>
-
-                    <div className="mt-8 space-y-3 text-[11px]">
-                      {[
-                        "Environment ready",
-                        "Failure detected",
-                        "Mentor available",
-                      ].map((item) => (
-                        <div
-                          key={item}
-                          className="flex items-center gap-2 text-[#67C587]"
-                        >
-                          <CheckCircle2 className="size-3.5" />
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-screen-2xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28 xl:px-16">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4F46E5]">
-              How Kubeza works
-            </p>
-
-            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-              Practice the way engineers actually work.
-            </h2>
-
-            <p className="mt-5 text-base leading-7 text-[#686861]">
-              The objective isn't to memorize commands. It's to
-              understand systems, investigate failures and make
-              reliable changes.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-[#18181B]/[0.08] bg-[#18181B]/[0.08] md:grid-cols-2 xl:grid-cols-4">
-            {workflow.map((item) => (
+        <section className="mx-auto max-w-screen-2xl px-6 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+          <div className="grid gap-4 lg:grid-cols-3">
+            {[
+              [
+                "01",
+                "Environments",
+                "The technologies and infrastructure domains you need to understand.",
+              ],
+              [
+                "02",
+                "Engineering scenarios",
+                "Problems designed around realistic operational failures.",
+              ],
+              [
+                "03",
+                "AI assistance",
+                "Guidance that helps you reason through problems while keeping you in control.",
+              ],
+            ].map(([number, title, description]) => (
               <article
-                key={item.number}
-                className="bg-[#F8F7F3] p-7 transition-colors hover:bg-white"
+                key={number}
+                className="rounded-2xl border border-white/[0.07] bg-[#070B16] p-7"
               >
-                <span className="font-mono text-xs font-medium text-[#4F46E5]">
-                  {item.number}
+                <span className="font-mono text-[10px] text-[#67E8F9]">
+                  {number}
                 </span>
 
-                <h3 className="mt-8 text-xl font-semibold">
-                  {item.title}
-                </h3>
+                <h2 className="mt-6 text-lg font-semibold">
+                  {title}
+                </h2>
 
-                <p className="mt-3 text-sm leading-6 text-[#686861]">
-                  {item.description}
+                <p className="mt-3 text-sm leading-6 text-slate-500">
+                  {description}
                 </p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="border-y border-[#18181B]/[0.07] bg-[#EAE9E4]">
-          <div className="mx-auto max-w-screen-2xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28 xl:px-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4F46E5]">
-              Practice areas
-            </p>
+        <section className="border-y border-white/[0.07] bg-[#070B16]">
+          <div className="mx-auto max-w-screen-2xl px-6 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#67E8F9]">
+                Environment layer
+              </p>
 
-            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-              From the shell to the cloud.
-            </h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                The platform grows environment by environment.
+              </h2>
 
-            <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {practiceAreas.map((area) => {
-                const Icon = area.icon;
+              <p className="mt-4 text-sm leading-7 text-slate-500 sm:text-base">
+                An environment does not automatically mean a runnable lab.
+                Kubeza separates technologies that are planned, being built,
+                and actually ready for interaction.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {environments.map((environment) => {
+                const Icon = environment.icon;
 
                 return (
                   <article
-                    key={area.title}
-                    className="rounded-xl border border-[#18181B]/[0.08] bg-[#F8F7F3] p-6 transition hover:-translate-y-0.5 hover:bg-white"
+                    key={environment.name}
+                    className="rounded-xl border border-white/[0.07] bg-[#050816] p-5"
                   >
-                    <div className="flex size-10 items-center justify-center rounded-lg bg-[#4F46E5]/[0.08] text-[#4F46E5]">
-                      <Icon className="size-5" />
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex size-10 items-center justify-center rounded-lg bg-[#4F46E5]/10 text-[#67E8F9]">
+                        <Icon className="size-5" />
+                      </div>
+
+                      <span className="rounded-full border border-white/[0.07] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-slate-600">
+                        {environment.status}
+                      </span>
                     </div>
 
-                    <h3 className="mt-5 text-lg font-semibold">
-                      {area.title}
+                    <h3 className="mt-5 text-base font-semibold">
+                      {environment.name}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-6 text-[#686861]">
-                      {area.description}
+                    <p className="mt-2 text-xs leading-5 text-slate-600">
+                      {environment.description}
                     </p>
                   </article>
                 );
               })}
             </div>
           </div>
+        </section>
+
+        <section className="mx-auto max-w-3xl px-6 py-20 text-center sm:px-8 lg:py-28">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#67E8F9]">
+            The bigger direction
+          </p>
+
+          <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
+            From interactive labs to an AI engineering workspace.
+          </h2>
+
+          <p className="mt-5 text-sm leading-7 text-slate-500 sm:text-base">
+            The current platform is the foundation. More environments,
+            deeper automation, and increasingly capable AI engineering
+            assistance will be built on top of it.
+          </p>
         </section>
       </main>
     </div>

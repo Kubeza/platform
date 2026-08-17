@@ -1,37 +1,33 @@
 import {
   ArrowRight,
-  BrainCircuit,
+  Bot,
   Code2,
   Terminal,
-  Wrench,
 } from "lucide-react";
 
 import Navbar from "../../components/navigation/Navbar";
 
-const values = [
+const principles = [
   {
+    number: "01",
+    title: "Operate, don't just read",
+    description:
+      "DevOps is learned through interaction. Kubeza puts engineers inside environments where they can investigate, change, break, and recover systems.",
     icon: Terminal,
-    title: "Practice over passive learning",
-    description:
-      "Infrastructure becomes understandable when you actually operate it.",
   },
   {
-    icon: Wrench,
-    title: "Problems over perfect demos",
+    number: "02",
+    title: "Understand the failure",
     description:
-      "Failures are part of engineering, so Kubeza makes them part of learning.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI that supports reasoning",
-    description:
-      "The AI Mentor is designed to improve your investigation process, not replace it.",
-  },
-  {
+      "The goal is not to memorize commands. It is to understand what failed, why it failed, and how to verify the fix.",
     icon: Code2,
-    title: "Built like real software",
+  },
+  {
+    number: "03",
+    title: "AI as an engineering partner",
     description:
-      "The platform itself is developed as an evolving engineering product.",
+      "The AI Mentor is designed to guide reasoning and investigation instead of simply handing over answers.",
+    icon: Bot,
   },
 ];
 
@@ -43,86 +39,101 @@ export default function About(): React.JSX.Element {
       <main>
         <section className="border-b border-[#18181B]/[0.07]">
           <div className="mx-auto max-w-screen-2xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28 xl:px-16">
-            <div className="max-w-4xl">
+            <div className="max-w-5xl">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4F46E5]">
                 About Kubeza
               </p>
 
-              <h1 className="mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
-                A different way to
+              <h1 className="mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.06em] sm:text-6xl lg:text-8xl">
+                DevOps should be
                 <span className="block text-[#4F46E5]">
-                  learn infrastructure.
+                  experienced.
                 </span>
               </h1>
 
               <p className="mt-7 max-w-2xl text-base leading-8 text-[#686861] sm:text-lg">
-                Kubeza is being built around a simple idea:
-                infrastructure skills are developed through
-                investigation, experimentation and repetition.
+                Kubeza is being built as an interactive engineering
+                platform where developers learn infrastructure by
+                operating it.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-screen-2xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28 xl:px-16">
+        <section className="mx-auto max-w-screen-2xl px-6 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4F46E5]">
-                Why we're building it
+                Why Kubeza
               </p>
 
-              <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-                Learning should feel closer to engineering.
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                From learning concepts
+                <br />
+                to operating systems.
               </h2>
             </div>
 
-            <div className="space-y-5 text-sm leading-7 text-[#686861] sm:text-base">
+            <div className="space-y-6 text-sm leading-7 text-[#686861] sm:text-base">
               <p>
-                Modern DevOps involves systems that are too complex
-                to understand through isolated command lists and
-                passive tutorials.
+                Traditional learning often separates theory from the
+                systems engineers eventually have to operate. Kubeza
+                is designed around closing that gap.
               </p>
 
               <p>
-                Engineers need opportunities to investigate broken
-                systems, make changes, observe consequences and
-                learn from failure.
+                Instead of only watching a tutorial about a broken
+                service, you should be able to enter the environment,
+                inspect it, find the failure, make a change, and
+                verify the result.
               </p>
 
               <p>
-                That is the direction Kubeza is taking: a practical
-                engineering environment where infrastructure,
-                labs and AI assistance come together.
+                AI then becomes a layer of engineering assistance:
+                helping you reason through a problem without removing
+                the problem-solving experience itself.
               </p>
             </div>
           </div>
         </section>
 
         <section className="border-y border-[#18181B]/[0.07] bg-[#EAE9E4]">
-          <div className="mx-auto max-w-screen-2xl px-6 py-20 sm:px-8 lg:px-12 lg:py-28 xl:px-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4F46E5]">
-              Our principles
-            </p>
+          <div className="mx-auto max-w-screen-2xl px-6 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4F46E5]">
+                Our principles
+              </p>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {values.map((value) => {
-                const Icon = value.icon;
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                Built around engineering reality.
+              </h2>
+            </div>
+
+            <div className="mt-10 grid gap-4 lg:grid-cols-3">
+              {principles.map((principle) => {
+                const Icon = principle.icon;
 
                 return (
                   <article
-                    key={value.title}
+                    key={principle.number}
                     className="rounded-2xl border border-[#18181B]/[0.08] bg-[#F8F7F3] p-7"
                   >
-                    <div className="flex size-10 items-center justify-center rounded-lg bg-[#4F46E5]/[0.08] text-[#4F46E5]">
-                      <Icon className="size-5" />
+                    <div className="flex items-center justify-between">
+                      <div className="flex size-11 items-center justify-center rounded-xl bg-[#4F46E5]/[0.08] text-[#4F46E5]">
+                        <Icon className="size-5" />
+                      </div>
+
+                      <span className="font-mono text-xs text-[#A0A09A]">
+                        {principle.number}
+                      </span>
                     </div>
 
-                    <h3 className="mt-6 text-xl font-semibold tracking-[-0.025em]">
-                      {value.title}
+                    <h3 className="mt-7 text-lg font-semibold">
+                      {principle.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-6 text-[#686861]">
-                      {value.description}
+                    <p className="mt-3 text-sm leading-6 text-[#777770]">
+                      {principle.description}
                     </p>
                   </article>
                 );
@@ -131,24 +142,33 @@ export default function About(): React.JSX.Element {
           </div>
         </section>
 
-        <section>
-          <div className="mx-auto max-w-4xl px-6 py-20 text-center sm:px-8 lg:py-28">
-            <h2 className="text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-              Build. Break. Understand.
-            </h2>
+        <section className="mx-auto max-w-screen-2xl px-6 py-16 sm:px-8 lg:px-12 lg:py-24 xl:px-16">
+          <div className="rounded-3xl bg-[#18181B] px-7 py-12 text-white sm:px-12 lg:px-16">
+            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#67E8F9]">
+                  The direction
+                </p>
 
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#686861] sm:text-base">
-              Kubeza is still evolving. The platform will grow
-              alongside the engineers using it.
-            </p>
+                <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                  Build a place where engineers can learn by doing.
+                </h2>
 
-            <a
-              href="/labs"
-              className="mt-8 inline-flex h-11 items-center gap-2 rounded-lg bg-[#4F46E5] px-6 text-sm font-medium text-white transition hover:bg-[#4338CA]"
-            >
-              Explore the labs
-              <ArrowRight className="size-4" />
-            </a>
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-[#A6A6A1]">
+                  Kubeza will grow environment by environment,
+                  scenario by scenario, toward a deeper AI-powered
+                  engineering workspace.
+                </p>
+              </div>
+
+              <a
+                href="/labs"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-white px-5 text-sm font-semibold text-[#18181B] transition hover:bg-[#F3F2EE]"
+              >
+                Explore labs
+                <ArrowRight className="size-4" />
+              </a>
+            </div>
           </div>
         </section>
       </main>

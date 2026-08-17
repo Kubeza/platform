@@ -2,11 +2,12 @@ import {
   Navigate,
   Route,
   Routes,
-  useParams,
 } from "react-router-dom";
 
+import Navbar from "./components/navigation/Navbar";
+import Hero from "./components/sections/hero/Hero";
+
 import LabsHome from "./pages/labs/LabsHome";
-import LabOverview from "./pages/labs/LabOverview";
 import LabWorkspace from "./pages/labs/LabWorkspace";
 
 import PracticeHome from "./pages/practice/PracticeHome";
@@ -24,27 +25,36 @@ import Pricing from "./pages/pricing/Pricing";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 
-import { getLabBySlug } from "./labs";
+import {
+  getLabBySlug,
+} from "./labs";
 
-function LabOverviewRoute(): React.JSX.Element {
-  const { slug } = useParams<{ slug: string }>();
+function LandingPage(): React.JSX.Element {
+  return (
+    <div className="min-h-screen bg-[#050816] text-white">
+      <Navbar />
 
-  const lab = slug ? getLabBySlug(slug) : undefined;
-
-  if (!lab) {
-    return <Navigate to="/labs" replace />;
-  }
-
-  return <LabOverview lab={lab} />;
+      <main>
+        <Hero />
+      </main>
+    </div>
+  );
 }
 
-function LabWorkspaceRoute(): React.JSX.Element {
-  const { slug } = useParams<{ slug: string }>();
-
-  const lab = slug ? getLabBySlug(slug) : undefined;
+function LabRoute({
+  slug,
+}: {
+  slug: string;
+}): React.JSX.Element {
+  const lab = getLabBySlug(slug);
 
   if (!lab) {
-    return <Navigate to="/labs" replace />;
+    return (
+      <Navigate
+        to="/labs"
+        replace
+      />
+    );
   }
 
   return <LabWorkspace lab={lab} />;
@@ -53,44 +63,14 @@ function LabWorkspaceRoute(): React.JSX.Element {
 export default function App(): React.JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/labs" replace />} />
-
-      <Route path="/labs" element={<LabsHome />} />
+      {/* HOME */}
 
       <Route
-        path="/labs/:slug"
-        element={<LabOverviewRoute />}
+        path="/"
+        element={<LandingPage />}
       />
 
-      <Route
-        path="/labs/:slug/workspace"
-        element={<LabWorkspaceRoute />}
-      />
-
-      <Route
-        path="/practice"
-        element={<PracticeHome />}
-      />
-
-      <Route
-        path="/practice/linux"
-        element={<LinuxPracticeWorkspace />}
-      />
-
-      <Route
-        path="/practice/networking"
-        element={<NetworkingPracticeWorkspace />}
-      />
-
-      <Route
-        path="/practice/docker"
-        element={<DockerPracticeWorkspace />}
-      />
-
-      <Route
-        path="/practice/kubernetes"
-        element={<KubernetesPracticeWorkspace />}
-      />
+      {/* PLATFORM */}
 
       <Route
         path="/platform"
@@ -102,6 +82,64 @@ export default function App(): React.JSX.Element {
         element={<AIMentorPage />}
       />
 
+      {/* LABS */}
+
+      <Route
+        path="/labs"
+        element={<LabsHome />}
+      />
+
+      <Route
+        path="/labs/:slug"
+        element={
+          <LabRoute
+            slug={
+              window.location.pathname
+                .split("/")
+                .filter(Boolean)[1] ??
+              ""
+            }
+          />
+        }
+      />
+
+      {/* PRACTICE */}
+
+      <Route
+        path="/practice"
+        element={<PracticeHome />}
+      />
+
+      <Route
+        path="/practice/linux"
+        element={
+          <LinuxPracticeWorkspace />
+        }
+      />
+
+      <Route
+        path="/practice/networking"
+        element={
+          <NetworkingPracticeWorkspace />
+        }
+      />
+
+      <Route
+        path="/practice/docker"
+        element={
+          <DockerPracticeWorkspace />
+        }
+      />
+
+      <Route
+        path="/practice/kubernetes"
+        element={
+          <KubernetesPracticeWorkspace />
+        }
+      />
+
+      {/* PUBLIC PAGES */}
+
       <Route
         path="/about"
         element={<About />}
@@ -111,6 +149,8 @@ export default function App(): React.JSX.Element {
         path="/pricing"
         element={<Pricing />}
       />
+
+      {/* AUTH */}
 
       <Route
         path="/signin"
@@ -122,9 +162,16 @@ export default function App(): React.JSX.Element {
         element={<SignUp />}
       />
 
+      {/* FALLBACK */}
+
       <Route
         path="*"
-        element={<Navigate to="/labs" replace />}
+        element={
+          <Navigate
+            to="/"
+            replace
+          />
+        }
       />
     </Routes>
   );
