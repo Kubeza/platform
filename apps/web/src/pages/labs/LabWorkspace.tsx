@@ -493,7 +493,7 @@ export default function LabWorkspace({
                       commands={commands}
                       status="connected"
                     >
-                      <Terminal className="flex h-[min(58vh,560px)] min-h-[360px] w-full max-w-none flex-col overflow-hidden rounded-xl border border-white/[0.1] bg-black shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
+                      <Terminal className="flex h-[min(62vh,620px)] min-h-[400px] w-full max-w-none flex-col overflow-hidden rounded-xl border border-white/[0.1] bg-black shadow-[0_25px_70px_rgba(0,0,0,0.35)]">
                         <TerminalHeader className="shrink-0 px-4 py-2.5">
                           <TerminalToolbar>
                             <div className="flex items-center gap-3">

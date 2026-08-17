@@ -2,6 +2,7 @@ import {
   Navigate,
   Route,
   Routes,
+  useParams,
 } from "react-router-dom";
 
 import Navbar from "./components/navigation/Navbar";
@@ -41,12 +42,14 @@ function LandingPage(): React.JSX.Element {
   );
 }
 
-function LabRoute({
-  slug,
-}: {
-  slug: string;
-}): React.JSX.Element {
-  const lab = getLabBySlug(slug);
+function LabRoute(): React.JSX.Element {
+  const { slug } = useParams<{
+    slug: string;
+  }>();
+
+  const lab = slug
+    ? getLabBySlug(slug)
+    : undefined;
 
   if (!lab) {
     return (
@@ -63,14 +66,10 @@ function LabRoute({
 export default function App(): React.JSX.Element {
   return (
     <Routes>
-      {/* HOME */}
-
       <Route
         path="/"
         element={<LandingPage />}
       />
-
-      {/* PLATFORM */}
 
       <Route
         path="/platform"
@@ -82,8 +81,6 @@ export default function App(): React.JSX.Element {
         element={<AIMentorPage />}
       />
 
-      {/* LABS */}
-
       <Route
         path="/labs"
         element={<LabsHome />}
@@ -91,19 +88,8 @@ export default function App(): React.JSX.Element {
 
       <Route
         path="/labs/:slug"
-        element={
-          <LabRoute
-            slug={
-              window.location.pathname
-                .split("/")
-                .filter(Boolean)[1] ??
-              ""
-            }
-          />
-        }
+        element={<LabRoute />}
       />
-
-      {/* PRACTICE */}
 
       <Route
         path="/practice"
@@ -138,8 +124,6 @@ export default function App(): React.JSX.Element {
         }
       />
 
-      {/* PUBLIC PAGES */}
-
       <Route
         path="/about"
         element={<About />}
@@ -150,8 +134,6 @@ export default function App(): React.JSX.Element {
         element={<Pricing />}
       />
 
-      {/* AUTH */}
-
       <Route
         path="/signin"
         element={<SignIn />}
@@ -161,8 +143,6 @@ export default function App(): React.JSX.Element {
         path="/signup"
         element={<SignUp />}
       />
-
-      {/* FALLBACK */}
 
       <Route
         path="*"
